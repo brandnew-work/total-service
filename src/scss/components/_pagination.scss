@@ -1,0 +1,66 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+
+@use "../base/text";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: var(--global-font-size-x-small);
+  align-items: center;
+  width: fit-content;
+  margin-inline: auto;
+  margin-top: mx.autoClamp(40, 80);
+  font-weight: 400;
+
+  a {
+    text-decoration: none;
+    line-height: 1;
+  }
+  &__prev,
+  &__next,
+  .page,
+  .current {
+    display: grid;
+    place-items: center;
+    width: mx.autoClamp(30, 43);
+    height: mx.autoClamp(30, 43);
+    border-radius: $radius;
+    background-color: $color-border;
+  }
+
+  .current {
+    background-color: $color-theme;
+    color: white;
+  }
+
+  &__prev,
+  &__next {
+    &::before {
+      content: "";
+      flex-shrink: 0;
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-top: 1px solid $color-text;
+      border-left: 1px solid $color-text;
+      transform: rotate(-45deg) translateX(15%) translateY(15%);
+    }
+    &.--disabled {
+      opacity: 0;
+    }
+  }
+  &__next {
+    flex-direction: row-reverse;
+    &::before {
+      transform: rotate(135deg) translateX(15%) translateY(15%);
+    }
+  }
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: var(--global-font-size-x-small);
+    @extend .text-regular;
+    font-family: $font-web;
+  }
+}

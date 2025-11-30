@@ -1,0 +1,38 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/text";
+@use "../base/space";
+
+.invite-tob {
+  &__inner {
+    @include mx.mq(md) {
+      padding-inline: 0;
+    }
+  }
+  &__contents-inner {
+    max-width: $inner_narrow;
+  }
+  &__contents {
+    padding: $high $inner_padding;
+    background-color: white;
+    background: url(../assets/invite-tob-bg-sp.jpg) no-repeat right center/cover;
+
+    @include mx.mq(md-up) {
+      padding: $x-high;
+      border-radius: $middle;
+      background-image: url(../assets/invite-tob-bg-pc.jpg);
+    }
+  }
+  &__title {
+    color: $color-theme;
+    word-break: keep-all;
+  }
+  &__description {
+    @extend .text-regular;
+    text-shadow: 0 0 4px white;
+  }
+  .--emphasis {
+    color: $color-accent;
+    font-weight: 700;
+  }
+}

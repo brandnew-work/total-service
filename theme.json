@@ -1,0 +1,88 @@
+{
+  "version": 3,
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "name": "color-theme",
+          "slug": "color-theme",
+          "color": "var(--global-color-theme)"
+        },
+        {
+          "name": "color-sub",
+          "slug": "color-sub",
+          "color": "var(--global-color-sub)"
+        },
+        {
+          "name": "color-accent",
+          "slug": "color-accent",
+          "color": "var(--global-color-accent)"
+        },
+        {
+          "name": "color-text",
+          "slug": "color-text",
+          "color": "var(--global-color-text)"
+        },
+        {
+          "name": "color-background",
+          "slug": "color-background",
+          "color": "var(--global-color-background)"
+        },
+        {
+          "name": "color-border",
+          "slug": "color-border",
+          "color": "var(--global-color-border)"
+        },
+        {
+          "name": "color-white",
+          "slug": "color-white",
+          "color": "var(--global-color-white)"
+        }
+      ]
+    },
+    "typography": {
+      "fontSizes": [
+        {
+          "name": "custom-x-small",
+          "slug": "custom-x-small",
+          "size": "var(--global-font-size-x-small)"
+        },
+        {
+          "name": "custom-small",
+          "slug": "custom-small",
+          "size": "var(--global-font-size-small)"
+        },
+        {
+          "name": "custom-base",
+          "slug": "custom-base",
+          "size": "var(--global-font-size-base)"
+        },
+        {
+          "name": "custom-medium",
+          "slug": "custom-medium",
+          "size": "var(--global-font-size-medium)"
+        },
+        {
+          "name": "custom-medium-large",
+          "slug": "custom-medium-large",
+          "size": "var(--global-font-size-medium-large)"
+        },
+        {
+          "name": "custom-large",
+          "slug": "custom-large",
+          "size": "var(--global-font-size-large)"
+        },
+        {
+          "name": "custom-x-large",
+          "slug": "custom-x-large",
+          "size": "var(--global-font-size-x-large)"
+        },
+        {
+          "name": "custom-web-emphasis",
+          "slug": "custom-web-emphasis",
+          "size": "var(--global-font-size-web-emphasis)"
+        }
+      ]
+    }
+  }
+}

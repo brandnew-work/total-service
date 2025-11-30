@@ -1,0 +1,33 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/text";
+@use "../base/space";
+
+.text-card {
+  display: grid;
+  place-items: center;
+  padding-block: mx.autoClamp(7, 14);
+  border: 5px solid $color-theme;
+  @extend .text-medium;
+  color: $color-theme;
+  font-weight: bold;
+  text-align: center;
+
+  &.--small {
+    font-size: mx.autoClamp(12, 18);
+  }
+}
+
+.text-cards {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  display: grid;
+  gap: mx.autoClamp(10, 20);
+  grid-template-columns: repeat(2, 1fr);
+
+  @include mx.mq(md-up) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

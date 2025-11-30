@@ -1,0 +1,38 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/space";
+@use "../base/text";
+
+.feature-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  @extend .text-xlarge;
+  &.--dir-column {
+    @include mx.mq(md-up) {
+      flex-direction: column;
+    }
+  }
+  @include mx.mq(md-up) {
+    justify-content: center;
+  }
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    @include mx.mq(md-up) {
+      justify-content: center;
+    }
+  }
+  .--small {
+    @extend .text-large;
+  }
+  .--emphasis {
+    padding: mx.autoClamp(3, 6) mx.autoClamp(10, 20);
+    background-color: white;
+    border: 5px solid $color-accent;
+    color: $color-accent;
+  }
+}

@@ -1,0 +1,250 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+
+/* -------------------------------------------------------------------
+  margin / padding
+------------------------------------------------------------------- */
+.mt {
+  &-x-high {
+    margin-top: $x-high;
+  }
+  &-high {
+    margin-top: $high;
+  }
+  &-middle {
+    margin-top: $middle;
+  }
+  &-low {
+    margin-top: $low;
+  }
+  &-0 {
+    margin-top: 0rem !important;
+  }
+}
+.mr {
+  &-x-high {
+    margin-right: $x-high;
+  }
+  &-high {
+    margin-right: $high;
+  }
+  &-middle {
+    margin-right: $middle;
+  }
+  &-low {
+    margin-right: $low;
+  }
+  &-0 {
+    margin-right: 0rem !important;
+  }
+}
+.mb {
+  &-x-high {
+    margin-bottom: $x-high;
+  }
+  &-high {
+    margin-bottom: $high;
+  }
+  &-middle {
+    margin-bottom: $middle;
+  }
+  &-low {
+    margin-bottom: $low;
+  }
+  &-0 {
+    margin-bottom: 0rem !important;
+  }
+}
+.ml {
+  &-x-high {
+    margin-left: $x-high;
+  }
+  &-high {
+    margin-left: $high;
+  }
+  &-middle {
+    margin-left: $middle;
+  }
+  &-low {
+    margin-left: $low;
+  }
+  &-0 {
+    margin-left: 0rem !important;
+  }
+}
+.mx {
+  &-x-high {
+    margin-inline: $x-high;
+  }
+  &-high {
+    margin-inline: $high;
+  }
+  &-middle {
+    margin-inline: $middle;
+  }
+  &-low {
+    margin-inline: $low;
+  }
+  &-0 {
+    margin-inline: 0rem !important;
+  }
+}
+.my {
+  &-x-high {
+    margin-block: $x-high;
+  }
+  &-high {
+    margin-block: $high;
+  }
+  &-middle {
+    margin-block: $middle;
+  }
+  &-low {
+    margin-block: $low;
+  }
+  &-0 {
+    margin-block: 0rem !important;
+  }
+}
+.ma {
+  &-x-high {
+    margin: $x-high;
+  }
+  &-high {
+    margin: $high;
+  }
+  &-middle {
+    margin: $middle;
+  }
+  &-low {
+    margin: $low;
+  }
+  &-0 {
+    margin: 0rem !important;
+  }
+}
+
+.pt {
+  &-x-high {
+    padding-top: $x-high;
+  }
+  &-high {
+    padding-top: $high;
+  }
+  &-middle {
+    padding-top: $middle;
+  }
+  &-low {
+    padding-top: $low;
+  }
+  &-0 {
+    padding-top: 0rem !important;
+  }
+}
+.pr {
+  &-x-high {
+    padding-right: $x-high;
+  }
+  &-high {
+    padding-right: $high;
+  }
+  &-middle {
+    padding-right: $middle;
+  }
+  &-low {
+    padding-right: $low;
+  }
+  &-0 {
+    padding-right: 0rem !important;
+  }
+}
+.pb {
+  &-x-high {
+    padding-bottom: $x-high;
+  }
+  &-high {
+    padding-bottom: $high;
+  }
+  &-middle {
+    padding-bottom: $middle;
+  }
+  &-low {
+    padding-bottom: $low;
+  }
+  &-0 {
+    padding-bottom: 0rem !important;
+  }
+  &-md-0 {
+    @include mx.mq(md) {
+      padding-bottom: 0rem !important;
+    }
+  }
+}
+.pl {
+  &-x-high {
+    padding-left: $x-high;
+  }
+  &-high {
+    padding-left: $high;
+  }
+  &-middle {
+    padding-left: $middle;
+  }
+  &-low {
+    padding-left: $low;
+  }
+  &-0 {
+    padding-left: 0rem !important;
+  }
+}
+.px {
+  &-x-high {
+    padding-inline: $x-high;
+  }
+  &-high {
+    padding-inline: $high;
+  }
+  &-middle {
+    padding-inline: $middle;
+  }
+  &-low {
+    padding-inline: $low;
+  }
+  &-0 {
+    padding-inline: 0rem !important;
+  }
+}
+.py {
+  &-x-high {
+    padding-block: $x-high;
+  }
+  &-high {
+    padding-block: $high;
+  }
+  &-middle {
+    padding-block: $middle;
+  }
+  &-low {
+    padding-block: $low;
+  }
+  &-0 {
+    padding-block: 0rem !important;
+  }
+}
+.pa {
+  &-x-high {
+    padding: $x-high;
+  }
+  &-high {
+    padding: $high;
+  }
+  &-middle {
+    padding: $middle;
+  }
+  &-low {
+    padding: $low;
+  }
+  &-0 {
+    padding: 0rem !important;
+  }
+}

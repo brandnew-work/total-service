@@ -1,0 +1,135 @@
+@charset "UTF-8";
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+
+.--nav-on {
+  // ナビ表示中はbodyのスクロールを禁止
+  overflow: hidden;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px 40px;
+
+  &__btn {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 34px;
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+    &-burger {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5.5px;
+      span {
+        position: relative;
+        display: block;
+        width: 24px;
+        height: 3px;
+        border-radius: 2px;
+        background-color: $color-theme;
+        transition: transform 0.3s linear;
+        .--nav-on & {
+          &:first-child {
+            top: 4.25px;
+            transform: rotate(45deg);
+          }
+          &:last-child {
+            top: -4.25px;
+            transform: rotate(-45deg);
+          }
+          &:nth-child(2) {
+            display: none;
+          }
+        }
+      }
+    }
+    @include mx.mq($hide-nav-width) {
+      display: none;
+    }
+  }
+
+  &__wrap {
+    display: flex;
+    gap: mx.autoClampSp(12, 12, 24);
+  }
+
+  &__list {
+    display: flex;
+    row-gap: $middle;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    li a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--global-font-size-x-small);
+      padding: mx.autoClamp(8, 16) mx.autoClampSp(12, 12, 24);
+      font-size: mx.autoClamp(16, 18);
+      font-weight: 500;
+      text-decoration: none;
+      text-align: center;
+      line-height: 1;
+      word-break: keep-all;
+      &::after {
+        content: attr(title);
+        color: $color-theme;
+        font-family: $font-web;
+        font-size: mx.autoClampSp(8, 8, 12);
+        text-transform: uppercase;
+        line-height: 1;
+        letter-spacing: 0.03em;
+      }
+    }
+  }
+
+  @include mx.mq($show-nav-width) {
+    width: 100%;
+    justify-content: flex-start;
+    &__wrap {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 10;
+      transform: translateY(-100%);
+      opacity: 0;
+      gap: 30px;
+      flex-direction: column;
+      width: 100%;
+      padding: $high $middle;
+      background-color: rgba(white, 1);
+      transition:
+        transform 0.5s ease-in-out,
+        opacity 0.5s 0.25s ease-in-out;
+      .--nav-on & {
+        transform: translateY(100%);
+        opacity: 1;
+      }
+    }
+    &__list {
+      flex-direction: column;
+      align-items: center;
+      li {
+        width: 100%;
+        text-align: left;
+        a {
+          flex-direction: row;
+          align-items: baseline;
+          padding: 0;
+          text-align: left;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@charset "UTF-8";
+@use "./setting/utility" as *;
+@use "./functions/functions" as mx;
+@use "common";
+
+@use "components/breadcrumbs";
+@use "components/feature-title";
+@use "components/flow-item";
+@use "components/staff-item";
+@use "components/text-card";
+@use "components/invite-tob";
+@use "components/faq";
+@use "components/case-item";
+@use "components/feature-section";
+@use "components/splide";
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.feature-case {
+  margin-inline: calc((100% - 100vw) / 2);
+}
+
+.feature-staff {
+  &.is-active {
+    margin-inline: calc($inner_padding * -1);
+  }
+  &:not(.is-active) {
+    .splide__list {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr);
+      gap: $low;
+    }
+  }
+}

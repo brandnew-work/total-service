@@ -1,0 +1,122 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/text";
+@use "../base/space";
+
+.btn-block {
+  @extend .text-medium;
+  @extend .mt-middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: fit-content;
+  min-width: mx.autoClamp(220, 300);
+  padding: $low;
+  background-color: rgba(white, 0.5);
+  border: 1px solid $color-sub;
+  border-radius: $radius;
+  color: $color-sub;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 9.2px;
+    height: 17px;
+    background: url("../assets/icon-arrow-sub.svg") no-repeat center center /
+      contain;
+  }
+
+  &.--center {
+    margin-inline: auto;
+  }
+
+  &.--right {
+    margin-left: auto;
+  }
+
+  &.--prev {
+    flex-direction: row-reverse;
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.--bottom {
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+
+  &.--email,
+  &.--line {
+    @extend .text-medium-large;
+    min-width: mx.autoClamp(327, 365);
+    font-weight: bold;
+    &::after {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &.--email {
+    flex-direction: row-reverse;
+    border-color: $color-accent;
+    background-color: $color-accent;
+    color: white;
+
+    &::after {
+      background-image: url("../assets/icon-envelope.svg");
+    }
+  }
+
+  &.--line {
+    flex-direction: row-reverse;
+    border-color: #06c755;
+    background-color: #06c755;
+    color: white;
+
+    &::after {
+      background-image: url("../assets/icon-line.svg");
+    }
+  }
+
+  &.--fill {
+    background-color: $color-sub;
+    color: white;
+    &::after {
+      background-image: url("../assets/icon-arrow-w.svg");
+    }
+  }
+
+  @include mx.mq(animate-up) {
+    transition: all 0.5s ease;
+    &:hover {
+      background-color: $color-sub;
+      color: white;
+      &::after {
+        background-image: url("../assets/icon-arrow-w.svg");
+      }
+      &.--line {
+        border-color: $color-sub;
+        &::after {
+          background-image: url("../assets/icon-line.svg");
+        }
+      }
+      &.--email {
+        border-color: $color-sub;
+        &::after {
+          background-image: url("../assets/icon-envelope.svg");
+        }
+      }
+      &.--fill {
+        background-color: rgba(white, 0.5);
+        color: $color-sub;
+        &::after {
+          background-image: url("../assets/icon-arrow-sub.svg");
+        }
+      }
+    }
+  }
+}

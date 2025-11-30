@@ -1,0 +1,33 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/space";
+@use "../base/text";
+
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(327px, 1fr));
+  gap: $low;
+  margin-top: $middle;
+}
+
+.service-card {
+  padding: 30px;
+  border-radius: $radius;
+  background-color: white;
+  text-align: center;
+  border-right: 3px solid $color-border;
+  border-bottom: 3px solid $color-border;
+
+  &__img {
+    height: mx.autoClamp(125, 175);
+  }
+  &__title {
+    @extend .text-large;
+    margin-top: mx.autoClamp(14, 16);
+    color: $color-theme;
+  }
+  &__description {
+    margin-top: mx.autoClamp(14, 16);
+    text-align: left;
+  }
+}

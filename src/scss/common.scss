@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+@use "setting/variables";
+
+@use "setting/utility" as *;
+@use "functions/functions" as mx;
+
+@use "base/base";
+@use "base/text";
+@use "base/background";
+@use "base/display";
+@use "base/space";
+@use "base/layout";
+@use "components/header";
+@use "components/header-nav";
+@use "components/footer";
+@use "components/title";
+@use "components/btn";
+@use "components/label";
+
+.common-cta {
+  &.has-border {
+    border-top: 1px solid $color-border;
+  }
+  &__title {
+    @extend .text-large;
+    color: $color-theme;
+    text-align: center;
+    word-break: keep-all;
+  }
+  &__btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $low;
+    margin-top: $low;
+  }
+}
+
+.post-list {
+  display: grid;
+  gap: $middle;
+
+  &.--col-2 {
+    @include mx.mq(lg-up) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.img-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  @include mx.mq(md-up) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  &__figure {
+    aspect-ratio: 3 / 2;
+    width: 100%;
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.page-title {
+  overflow: hidden;
+}

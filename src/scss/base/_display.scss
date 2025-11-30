@@ -1,0 +1,44 @@
+@use "sass:map";
+@use "sass:list";
+
+/* -------------------------------------------------------------------
+  display
+------------------------------------------------------------------- */
+
+.d {
+  &-inline {
+    display: inline;
+  }
+  &-inline-block {
+    display: inline-block;
+  }
+  &-block {
+    display: block;
+  }
+  &-flex {
+    display: flex;
+  }
+}
+
+/* -------------------------------------------------------------------
+  show and hide
+------------------------------------------------------------------- */
+
+// 例: .--sm は sm以上で非表示、. --sm-up は sm以下で非表示 を一括生成
+@mixin mq-visibility-helpers(
+  $prefix: "--",                // 接頭辞
+  $exclude: ("animate"),        // 除外したいキー
+) {
+  @each $name, $val in $breakpoints {
+    @if list.index($exclude, $name) == null {
+      // >= {name} で .--{name} を隠す → （= そのBP未満のみ表示）
+      @include mq(#{$name}-up) {
+        .#{$prefix}#{$name} { display: none !important; }
+      }
+      // <= {name} で .--{name}-up を隠す → （= そのBP以上のみ表示）
+      @include mq(#{$name}) {
+        .#{$prefix}#{$name}-up { display: none !important; }
+      }
+    }
+  }
+}

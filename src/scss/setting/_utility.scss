@@ -1,0 +1,57 @@
+/* -------------------------------------------------------------------
+  default colors
+------------------------------------------------------------------- */
+
+$color-base: #fafafa;
+$color-theme: var(--global-color-theme);
+$color-text: var(--global-color-text);
+$color-border: var(--global-color-border);
+$color-sub: var(--global-color-sub);
+$color-accent: var(--global-color-accent);
+$color-background: var(--global-color-background);
+
+/* -------------------------------------------------------------------
+  default web-font
+------------------------------------------------------------------- */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400..700&family=Noto+Sans+JP:wght@400..700&display=swap");
+$font-web: "Montserrat", sans-serif;
+
+/* -------------------------------------------------------------------
+  default width
+------------------------------------------------------------------- */
+$inner: var(--global-display-base);
+$inner_wide: var(--global-display-wide);
+$inner_narrow: var(--global-display-narrow);
+$inner_padding: var(--global-space-padding-inline);
+
+/* -------------------------------------------------------------------
+  default spacing
+------------------------------------------------------------------- */
+
+$x-high: var(--global-space-x-high);
+$high: var(--global-space-high);
+$middle: var(--global-space-middle);
+$low: var(--global-space-low);
+
+/* -------------------------------------------------------------------
+  breakpoints
+------------------------------------------------------------------- */
+
+$breakpoints: (
+  xs: 480px,
+  sm: 600px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1366px,
+  mx: 1600px,
+  animate: 768px,
+);
+$show-nav-width: lg; // SP Navi
+$hide-nav-width: lg-up; // PC Nav
+
+/* -------------------------------------------------------------------
+  other
+------------------------------------------------------------------- */
+
+$radius: var(--global-other-border-radius);

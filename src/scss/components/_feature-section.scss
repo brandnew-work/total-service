@@ -1,0 +1,165 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/text";
+@use "../base/space";
+
+body {
+  counter-reset: feature;
+}
+
+.feature-section {
+  $bp_high: lg-up;
+  $bp_low: sm-up;
+  display: grid;
+
+  @include mx.mq(#{$bp_low}) {
+    grid-template-columns: 1fr max-content;
+    column-gap: $middle;
+  }
+
+  @include mx.mq(#{$bp_high}) {
+    grid-template-columns: minmax(0, var(--global-display-narrow)) max-content;
+    column-gap: $high;
+    justify-content: space-between;
+  }
+
+  &__num {
+    &::before {
+      content: counter(feature, decimal-leading-zero);
+      counter-increment: feature;
+      @extend .text-web-emphasis;
+      color: $color-theme;
+      opacity: 0.1;
+    }
+
+    @include mx.mq(#{$bp_low}) {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+  }
+
+  &__title {
+    @extend .text-xlarge;
+    color: $color-theme;
+    word-break: keep-all;
+
+    @include mx.mq(#{$bp_low}) {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+  }
+
+  &__contents {
+    @extend .mt-middle;
+
+    @include mx.mq(#{$bp_low}) {
+      grid-area: 3 / 1 / 4 / 3;
+    }
+
+    @include mx.mq(#{$bp_high}) {
+      grid-area: 3 / 1 / 4 / 2;
+    }
+  }
+
+  &__description {
+    @extend .text-medium;
+    margin-bottom: 0;
+  }
+
+  &__figure {
+    margin-top: $middle;
+    justify-self: center;
+
+    @include mx.mq(#{$bp_low}) {
+      grid-area: 1 / 2 / 3 / 3;
+      margin-top: 0;
+    }
+
+    @include mx.mq(#{$bp_high}) {
+      grid-area: 1 / 2 / 4 / 3;
+    }
+  }
+
+  &__img {
+    height: mx.autoClampSp(200, 200, 350);
+  }
+
+  &__sub {
+    @include mx.mq(#{$bp_low}) {
+      grid-area: 4 / 1 / 5 / 3;
+    }
+
+    @include mx.mq(#{$bp_high}) {
+      grid-area: 4 / 1 / 5 / 2;
+    }
+  }
+
+  &__sub-title {
+    @extend .text-medium-large;
+    margin-top: $low;
+    color: $color-theme;
+    font-weight: 700;
+  }
+
+  &__sub-description {
+    @extend .text-regular;
+    margin-top: $low;
+  }
+
+  &.--revert {
+    @include mx.mq(#{$bp_high}) {
+      grid-template-columns: max-content minmax(0, var(--global-display-narrow));
+      .feature-section {
+        &__num {
+          grid-area: 1 / 2 / 2 / 3;
+        }
+        &__title {
+          grid-area: 2 / 2 / 3 / 3;
+        }
+        &__contents {
+          grid-area: 3 / 2 / 4 / 3;
+        }
+        &__figure {
+          grid-area: 1 / 1 / 4 / 2;
+        }
+      }
+    }
+  }
+
+  &.--is-service {
+    .feature-section {
+      &__figure {
+        width: mx.autoClampSp(110, 150, 300);
+        height: mx.autoClampSp(110, 150, 300);
+        border-radius: 50%;
+        overflow: hidden;
+
+        @include mx.mq(#{$bp_low}) {
+          justify-self: end;
+        }
+      }
+      &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      @include mx.mq(md) {
+        &__num {
+          grid-area: 1 / 1 / 2 / 2;
+        }
+        &__title {
+          grid-area: 2 / 1 / 3 / 2;
+        }
+        &__contents {
+          grid-area: 3 / 1 / 4 / 3;
+          margin-top: $low;
+        }
+        &__figure {
+          grid-area: 1 / 2 / 3 / 3;
+          margin-top: 0;
+          justify-self: end;
+          align-self: end;
+        }
+      }
+    }
+  }
+}

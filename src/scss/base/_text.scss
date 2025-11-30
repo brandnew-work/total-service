@@ -1,0 +1,103 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+
+/* -------------------------------------------------------------------
+  text, font
+------------------------------------------------------------------- */
+
+.fw {
+  &-b {
+    font-weight: 700;
+  }
+  &-m {
+    font-weight: 500;
+  }
+  &-l {
+    font-weight: 400;
+  }
+}
+
+.text {
+  &-center {
+    text-align: center;
+  }
+  &-left {
+    text-align: left;
+  }
+  &-right {
+    text-align: right;
+  }
+}
+
+.color {
+  &-theme {
+    color: $color-theme;
+  }
+  &-sub {
+    color: $color-sub;
+  }
+}
+
+.text-label {
+  font-weight: 500;
+  font-size: var(--global-font-size-x-small);
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.text-xsmall {
+  font-weight: 500;
+  font-size: var(--global-font-size-x-small);
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+.text-small {
+  font-weight: 500;
+  font-size: var(--global-font-size-small);
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+.text-regular {
+  font-weight: 400;
+  font-size: var(--global-font-size-regular);
+  letter-spacing: 0.01em;
+  line-height: 1.8;
+}
+
+.text-medium {
+  font-weight: 400;
+  font-size: var(--global-font-size-medium);
+  letter-spacing: 0.01em;
+  line-height: 1.8;
+}
+
+.text-medium-large {
+  font-weight: 400;
+  font-size: var(--global-font-size-medium-large);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+}
+
+.text-large {
+  font-weight: 700;
+  font-size: var(--global-font-size-large);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+}
+
+.text-xlarge {
+  font-weight: 700;
+  font-size: var(--global-font-size-x-large);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+}
+
+.text-web-emphasis {
+  font-family: $font-web;
+  font-weight: 600;
+  font-size: var(--global-font-size-web-emphasis);
+  letter-spacing: 0.01em;
+  line-height: 1;
+}

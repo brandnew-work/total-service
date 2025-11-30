@@ -1,0 +1,39 @@
+@charset "UTF-8";
+@use "./setting/utility" as *;
+@use "./functions/functions" as mx;
+@use "common";
+
+@use "components/breadcrumbs";
+@use "components/faq";
+
+.faq-labels {
+  display: flex;
+  // flex-wrap: wrap;
+  justify-content: center;
+  gap: $low;
+}
+
+.faq-label {
+  margin-top: 0;
+  padding: mx.autoClamp(10, 20) $low;
+  background-color: white;
+  word-break: keep-all;
+  @include mx.mq(lg) {
+    min-width: 0;
+    flex: 1;
+    line-height: 1.2;
+    font-size: mx.autoClamp(14, 18);
+  }
+}
+
+.faq-row {
+  @extend .pt-high;
+  &__title {
+    text-align: center;
+    @extend .text-large;
+    color: $color-theme;
+  }
+  .faq-list {
+    margin-top: $middle;
+  }
+}

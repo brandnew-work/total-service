@@ -1,0 +1,77 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/space";
+@use "../base/text";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  @extend .text-regular;
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  color: $color-text;
+  background-color: $color-base;
+  &.--on {
+    overflow: hidden;
+  }
+}
+
+a {
+  color: $color-text;
+  text-decoration: underline;
+  @include mx.mq(animate-up) {
+    transition: 0.3s linear color;
+    &:hover {
+      color: $color-theme;
+    }
+  }
+}
+
+p {
+  margin-top: 1em;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+img,
+svg {
+  vertical-align: bottom;
+  height: auto;
+  max-width: 100%;
+}
+iframe {
+  vertical-align: bottom;
+}
+
+figure {
+  margin: 0;
+}
+
+b {
+  font-weight: 700;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+
+section {
+  overflow-x: hidden;
+}

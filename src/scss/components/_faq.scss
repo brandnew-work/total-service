@@ -1,0 +1,77 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/text";
+@use "../base/space";
+
+.section-faq {
+  margin-top: mx.autoClamp(50, 120);
+
+  &__inner {
+    @include mx.mq(lg-up) {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: $high;
+    }
+  }
+
+  .faq-list {
+    @extend .mt-middle;
+    @include mx.mq(lg-up) {
+      margin-top: 0;
+    }
+  }
+
+  &__btn {
+    margin-left: auto;
+    @include mx.mq(lg-up) {
+      grid-column: span 2;
+    }
+  }
+}
+
+.faq-item {
+  margin: 0;
+  & + & {
+    margin-top: var(--global-font-size-base);
+  }
+  &__title {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: var(--global-font-size-base);
+    background-color: white;
+    border-radius: $radius;
+    border-right: 3px solid $color-border;
+    border-bottom: 3px solid $color-border;
+    cursor: pointer;
+
+    &::after {
+      content: "＋";
+      transition: transform 0.1s linear;
+    }
+    &.--accordion-on::after {
+      transform: rotate(135deg);
+    }
+  }
+  &__title-text {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    @extend .text-regular;
+    font-weight: bold;
+
+    &::before {
+      content: "Q";
+      font-family: $font-web;
+      font-weight: bold;
+      color: $color-accent;
+    }
+  }
+  &__description {
+    display: none;
+    margin-left: 0;
+    padding: var(--global-font-size-base) $low 0;
+    @extend .text-regular;
+  }
+}

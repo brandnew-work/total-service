@@ -1,0 +1,69 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/text";
+@use "../base/space";
+
+.category-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(mx.autoClamp(158, 292), 1fr));
+  gap: 10px;
+  margin-top: $middle;
+}
+
+.category-card {
+  $block: &;
+
+  position: relative;
+  display: grid;
+  place-items: center;
+  max-width: 100%;
+  height: mx.autoClamp(80, 120);
+  text-decoration: none;
+  border-radius: $radius;
+  overflow: hidden;
+
+  &__figure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: $radius;
+    overflow: hidden;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-size: mx.autoClamp(13, 18);
+    font-weight: bold;
+  }
+
+  @include mx.mq(animate-up) {
+    #{$block}__img {
+      transition: transform 0.3s linear;
+    }
+    &:hover {
+      #{$block}__img {
+        transform: scale(1.1);
+        transition: transform 0.3s linear;
+      }
+    }
+  }
+}

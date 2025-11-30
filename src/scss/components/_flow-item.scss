@@ -1,0 +1,110 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/text";
+@use "../base/space";
+
+$circle-width: mx.autoClamp(10, 21);
+$circle-top-space: var(--global-font-size-medium-large) / 2;
+
+.flow-item {
+  counter-increment: flow-num;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: $low;
+
+  & + & {
+    padding-top: $low;
+  }
+
+  &::before {
+    content: "";
+    position: relative;
+    z-index: 1;
+    transform: translateY(calc($circle-top-space));
+    display: block;
+    aspect-ratio: 1 / 1;
+    width: $circle-width;
+    height: auto;
+    margin-top: $middle;
+    background-color: $color-theme;
+    border-radius: 50%;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(#{$circle-width} / 2);
+    transform: translateX(-50%);
+    display: block;
+    width: 2px;
+    height: 100%;
+    background-color: $color-border;
+  }
+
+  &:first-child::after {
+    top: calc($middle + $circle-top-space);
+  }
+
+  &:last-child::after {
+    height: calc($middle + $low + $circle-top-space);
+  }
+
+  &__contents {
+    position: relative;
+    padding: $middle;
+    border-radius: $radius;
+    background-color: white;
+    border-right: 3px solid $color-border;
+    border-bottom: 3px solid $color-border;
+    &::before {
+      content: "";
+      position: absolute;
+      top: $middle;
+      left: 0;
+      transform: translateY(calc($circle-top-space)) translateX(-100%);
+      width: mx.autoClamp(5, 10);
+      height: mx.autoClamp(10, 21);
+      clip-path: polygon(100% 0, 0 50%, 100% 100%);
+      background-color: white;
+    }
+    &::after {
+      content: counter(flow-num);
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-family: $font-web;
+      font-size: 100px;
+      font-weight: 600;
+      line-height: 1;
+      color: $color-theme;
+      opacity: 0.05;
+    }
+  }
+
+  &__title {
+    @extend .text-medium-large;
+    font-weight: bold;
+  }
+
+  &__description {
+    margin-block: $low 0;
+    @extend .text-regular;
+  }
+
+  &__btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $low;
+    margin-top: $low;
+  }
+  .btn-block {
+    width: 200px;
+    min-width: initial;
+    margin-top: 0;
+    padding: 14px;
+    font-size: var(--global-font-size-medium);
+    font-weight: 500;
+  }
+}

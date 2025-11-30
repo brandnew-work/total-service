@@ -1,0 +1,62 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/text";
+@use "../base/space";
+
+.bubble-section {
+  $block: &;
+  display: flex;
+  gap: $low;
+
+  &__icon {
+    &::after {
+      content: "";
+      flex-shrink: 0;
+      display: block;
+      width: mx.autoClamp(50, 75);
+      height: mx.autoClamp(50, 75);
+      background: url("../assets/icon-user-1.svg") no-repeat center/contain;
+    }
+  }
+  &__content {
+    position: relative;
+    width: 100%;
+    padding: $low;
+    border-radius: calc($radius * 2);
+    background-color: $color-border;
+    &::after {
+      content: "";
+      position: absolute;
+      top: $low;
+      left: 0;
+      width: 10px;
+      height: 21px;
+      transform: translateX(calc(-100% + 1px));
+      clip-path: polygon(100% 0, 0 50%, 100% 100%);
+      background-color: $color-border;
+    }
+    *:first-of-type {
+      margin-top: 0;
+    }
+  }
+  &.is-user-2 {
+    #{$block}__icon::after {
+      background-image: url("../assets/icon-user-2.svg");
+    }
+  }
+  &.is-user-ts {
+    flex-direction: row-reverse;
+    #{$block}__icon::after {
+      background-image: url("../assets/icon-user-logo.svg");
+    }
+    #{$block}__content {
+      background-color: #c3f69d;
+      &::after {
+        left: auto;
+        right: 0;
+        transform: translateX(calc(100% - 1px)) rotate(180deg);
+        background-color: #c3f69d;
+      }
+    }
+  }
+}

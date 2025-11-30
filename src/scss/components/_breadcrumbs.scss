@@ -1,0 +1,24 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/text" as *;
+
+.breadcrumbs {
+  &__inner {
+    @extend .text-xsmall;
+    text-wrap: nowrap;
+    overflow-x: auto;
+    > span {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: $color-text;
+  }
+  .breadcrumb_last {
+    color: $color-sub;
+    font-weight: 600;
+  }
+}

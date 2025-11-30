@@ -1,0 +1,28 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/text";
+@use "../base/space";
+
+.label {
+  padding: 6px 12px;
+  border-radius: 2px;
+  border: 1px solid $color-theme;
+  @extend .text-label;
+  color: $color-theme;
+  font-weight: bold;
+  text-decoration: none;
+
+  &.--accent {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+
+  &.--fill {
+    background-color: $color-theme;
+    color: white;
+    &.--accent {
+      background-color: $color-accent;
+      border-color: $color-accent;
+    }
+  }
+}

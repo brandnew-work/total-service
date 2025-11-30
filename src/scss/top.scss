@@ -1,0 +1,50 @@
+@charset "UTF-8";
+@use "./setting/utility" as *;
+@use "./functions/functions" as mx;
+@use "common";
+
+@use "components/feature-title";
+@use "components/invite-tob";
+@use "components/post-item";
+@use "components/case-item";
+@use "components/category-card";
+@use "components/service-card";
+@use "components/faq";
+@use "components/splide";
+
+.home-case {
+  margin-top: mx.autoClamp(50, 120);
+
+  &__inner {
+    @include mx.mq(lg-up) {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto 1fr;
+      column-gap: $high;
+    }
+  }
+
+  &__title {
+    @include mx.mq(lg-up) {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+  }
+
+  &__carousel {
+    @extend .mt-middle;
+    margin-right: calc(-1 * #{$inner_padding});
+    @include mx.mq(lg-up) {
+      margin-top: 0;
+      grid-area: 1 / 2 / 3 / 3;
+    }
+  }
+
+  &__btn {
+    margin-left: auto;
+    @include mx.mq(lg-up) {
+      margin-left: 0;
+      grid-area: 2 / 1 / 3 / 2;
+      align-self: start;
+    }
+  }
+}

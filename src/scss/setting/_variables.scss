@@ -1,0 +1,39 @@
+@use "../functions/functions" as mx;
+
+:root {
+  --drop-shadow: 0px 0px 4px 0px #00000040;
+
+  --global-display-base: 1200px;
+  --global-display-narrow: 760px;
+  --global-display-wide: 1440px;
+
+  --global-space-high: #{mx.autoClamp(50, 100)};
+  --global-space-middle: #{mx.autoClamp(30, 60)};
+  --global-space-low: #{mx.autoClamp(15, 30)};
+  --global-space-x-high: #{mx.autoClamp(80, 120)};
+  --global-space-padding-inline: #{mx.autoClamp(24, 60)};
+
+  --global-font-size-x-small: #{mx.autoClamp(10, 12)};
+  --global-font-size-small: #{mx.autoClamp(12, 14)};
+  --global-font-size-base: #{mx.autoClamp(14, 16)};
+  --global-font-size-regular: #{mx.autoClamp(14, 16)};
+  --global-font-size-medium: #{mx.autoClamp(15, 18)};
+  --global-font-size-medium-large: #{mx.autoClamp(18, 24)};
+  --global-font-size-large: #{mx.autoClamp(22, 32)};
+  --global-font-size-x-large: #{mx.autoClamp(26, 42)};
+  --global-font-size-web-emphasis: #{mx.autoClamp(70, 120)};
+  --global-font-size-btn: #{mx.autoClamp(16, 18)};
+
+  --global-case-item-width: #{mx.autoClamp(250, 340)};
+  --global-staff-item-width: #{mx.autoClamp(250, 380)};
+
+  --global-color-theme: #214559;
+  --global-color-text: #111111;
+  --global-color-border: #eeeeee;
+  --global-color-background: #fafafa;
+  --global-color-accent: #d85a5c;
+  --global-color-white: #ffffff;
+  --global-color-sub: #31908d;
+
+  --global-other-border-radius: #{mx.autoClamp(3, 5)};
+}

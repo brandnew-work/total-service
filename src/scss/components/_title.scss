@@ -1,0 +1,36 @@
+@use "../setting/utility" as *;
+@use "../functions/functions" as mx;
+@use "../base/space";
+@use "../base/text";
+
+.title {
+  &-h2 {
+    display: grid;
+    height: fit-content;
+    @extend .text-large;
+    color: $color-theme;
+    font-weight: 700;
+
+    &::before {
+      @extend .text-web-emphasis;
+      content: attr(en);
+      display: block;
+      opacity: 0.1;
+      text-transform: uppercase;
+      grid-area: 1 / 1 / 2 / 2;
+    }
+
+    &__text {
+      grid-area: 1 / 1 / 2 / 2;
+      align-self: end;
+
+      .--center & {
+        justify-self: center;
+      }
+    }
+
+    &.--center {
+      justify-content: center;
+    }
+  }
+}

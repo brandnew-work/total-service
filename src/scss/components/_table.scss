@@ -1,0 +1,47 @@
+@use "../setting/utility" as *;
+@use "../setting/variables" as *;
+@use "../functions/functions" as mx;
+@use "../base/text" as *;
+
+table {
+  border-spacing: 0;
+}
+
+.table,
+.table-sp {
+  width: 100%;
+  border-bottom: 1px solid $color-border;
+  th,
+  td {
+    vertical-align: top;
+    padding: var(--global-font-size-base) $low;
+    border-top: 1px solid $color-border;
+  }
+  th {
+    width: 0;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: 700;
+    @extend .text-regular;
+  }
+  td {
+    @extend .text-regular;
+  }
+}
+
+.table-scroll {
+  &__wrap {
+    overflow: auto;
+    white-space: nowrap;
+    margin: 1em 0;
+  }
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #bcbcbc;
+  }
+}

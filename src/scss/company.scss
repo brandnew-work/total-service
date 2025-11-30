@@ -1,0 +1,57 @@
+@charset "UTF-8";
+@use "./setting/utility" as *;
+@use "./functions/functions" as mx;
+@use "common";
+
+@use "components/breadcrumbs";
+@use "components/table";
+
+.company-greeting {
+  display: grid;
+  gap: $middle;
+  @include mx.mq(md-up) {
+    grid-template-columns: minmax(0, $inner_narrow) auto;
+    justify-content: space-between;
+  }
+  &__title {
+    @extend .text-xlarge;
+    color: $color-theme;
+    word-break: keep-all;
+    text-align: center;
+    @include mx.mq(md-up) {
+      grid-area: 1 / 1 / 2 / 3;
+      text-align: left;
+    }
+  }
+  &__description {
+    margin: 0;
+    @extend .text-medium;
+    line-height: 1.8;
+    @include mx.mq(md-up) {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+  }
+  &__figure {
+    justify-self: center;
+    aspect-ratio: 1 / 1;
+    width: mx.autoClamp(250, 300);
+    @include mx.mq(md-up) {
+      grid-area: 2 / 2 / 3 / 3;
+      width: mx.autoClamp(150, 300);
+    }
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: $radius;
+  }
+  &__figcaption {
+    margin-top: var(--global-font-size-x-small);
+    text-align: center;
+    @extend .text-regular;
+    font-weight: 700;
+    line-height: 1.5;
+    color: $color-theme;
+  }
+}

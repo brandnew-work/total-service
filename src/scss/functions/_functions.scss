@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+@use "sass:map";
+@use "sass:string";
+@use "sass:math";
+@use "../setting/utility" as *;
+
+/* -------------------------------------------------------------------
+  各種rem計算（font以外）
+------------------------------------------------------------------- */
+@function rem($size: 0, $base: 16) {
+  @return math.div($size, $base) + rem;
+}
+
+/* -------------------------------------------------------------------
+  flex時のgapを差し引いた横幅計算
+------------------------------------------------------------------- */
+@mixin width-calc-gap($column: 4, $gap: 2rem, $imp: "") {
+  width: calc(
+    (100% / #{$column}) - ((#{$gap} * (#{$column} - 1)) / #{$column})
+  );
+}
+
+/* -------------------------------------------------------------------
+  アスペクト比固定
+------------------------------------------------------------------- */
+@mixin aspect($horizon: 16, $vertical: 9, $fit: cover) {
+  aspect-ratio: math.div($horizon, $vertical);
+  width: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: $fit;
+  }
+}
+
+/* -------------------------------------------------------------------
+  vw変換
+------------------------------------------------------------------- */
+
+@function strip-unit($value) {
+  @if math.is-unitless($value) {
+    @return $value;
+  }
+  @return math.div($value, ($value * 0 + 1));
+}
+
+@function vw($size, $width: $width) {
+  $val: math.div($size, $width) * 100;
+  @return $val + vw;
+}
+
+@function autoClamp($start, $end) {
+  $start-num: strip-unit($start);
+  $end-num: strip-unit($end);
+
+  $middle: math.div(($end-num - $start-num), 2) + $start-num;
+
+  @return clamp(#{$start-num}px, vw($middle, 768), #{$end-num}px);
+}
+
+// tabletサイズでデザイン納品された場合
+@function autoClampSp($sp: math.div($tb, 2), $tb: $pc, $pc, $width: 768) {
+  @return clamp(#{$sp}px, vw($tb, $width), #{$pc}px);
+}
+@mixin autoClampSp($prefix, $sp: math.div($tb, 2), $tb: $pc, $pc, $width: 768) {
+  @if $tb > $pc {
+    #{$prefix}: clamp(#{$sp}px, vw($tb, $width), #{$tb}px);
+    @media screen and (min-width: ($width + 0.1px)) {
+      #{$prefix}: #{$pc}px;
+    }
+  } @else {
+    #{$prefix}: clamp(#{$sp}px, vw($tb, $width), #{$pc}px);
+  }
+}
+
+/* -------------------------------------------------------------------
+  MediaQuery
+    ex.
+      @include mq(sm)     -> (max-width: 600px)
+      @include mq(sm-up)  -> (min-width: 600.1px)
+------------------------------------------------------------------- */
+$mq-up-offset: 0.1px !default;
+
+@function _bp-base($bp) {
+  $i: string.index($bp, "-up");
+  @if $i {
+    @return string.unquote(string.slice($bp, 1, $i - 1));
+  }
+  @return string.unquote($bp);
+}
+
+@function _bp-value($bp) {
+  $base: _bp-base($bp);
+  $val: map.get($breakpoints, $base);
+  @if $val == null {
+    @error "Unknown breakpoint: `#{$base}`";
+  }
+  @return if(string.index($bp, "-up"), $val + $mq-up-offset, $val);
+}
+
+@mixin mq($bp) {
+  $prop: if(string.index($bp, "-up"), "min-width", "max-width");
+  @media (#{$prop}: #{_bp-value($bp)}) {
+    @content;
+  }
+}
+
+/* -------------------------------------------------------------------
+  スクロールバーを引いた100vw
+------------------------------------------------------------------- */
+@function get_100vw() {
+  @return 100vw - (100vw - 100%);
+}
